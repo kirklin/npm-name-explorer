@@ -1,0 +1,17 @@
+{
+  "name": "npm-name-explorer-api",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "cross-env PORT=8899 nitro dev",
+    "build": "nitro build",
+    "preview": "node .output/server/index.mjs"
+  },
+  "dependencies": {
+    "npm-name-explorer": "workspace:*"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "nitropack": "^2.5.2"
+  }
+}
