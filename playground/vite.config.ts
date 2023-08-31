@@ -24,7 +24,6 @@ export default defineConfig(async ({ mode }) => {
     VITE_PROXY,
   } = viteEnv;
   const pathResolve = (pathname: string) => resolve(root, ".", pathname);
-  console.warn(VITE_PROXY, "VITE_PROXY");
   return {
     server: {
       host: "localhost",
