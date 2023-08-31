@@ -49,7 +49,7 @@ export default defineConfig({
     port: 8888,
     open: true,
     https: false,
-    proxy: configureProxy([["/api", "https://npm-name-explorer-api.vercel.app"]]),
+    proxy: configureProxy([["/api", "https://npm-name-explorer-api.vercel.app/"]]),
   },
   plugins: [
     Vue(
