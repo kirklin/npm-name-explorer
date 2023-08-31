@@ -46,7 +46,8 @@
     "start": "esno src/index.ts",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
-    "up": "taze major -r -w -I"
+    "up": "taze major -r -w -I",
+    "postinstall": "pnpm unbuild"
   },
   "dependencies": {
     "axios": "^1.5.0",
