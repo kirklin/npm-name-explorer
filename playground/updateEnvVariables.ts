@@ -1,5 +1,7 @@
 import process from "node:process";
 
+type Recordable<T = any> = Record<string, T>;
+
 export interface GlobEnvConfig extends ImportMetaEnv {
   BASE_URL: string;
   MODE: string;

@@ -6,6 +6,6 @@ enum API {
 
 // Define functions to call the APIs
 export async function checkNpmName(packageName: string): Promise<boolean> {
-  const response = await axios.get(`/api${API.checkNpmName}/${packageName}`);
-  return response.data.exists;
+  const response = await axios.get(`${API.checkNpmName}/${packageName}`);
+  return response.data;
 }

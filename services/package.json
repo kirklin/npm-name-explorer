@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "cross-env PORT=8899 nitro dev",
+    "dev": "cross-env PORT=3000 nitro dev",
     "build": "nitro build",
     "preview": "node .output/server/index.mjs"
   },
