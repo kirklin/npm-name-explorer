@@ -14,8 +14,8 @@ const state = reactive<{
 });
 const checkNpmNameExists = async (packageName: string) => {
   try {
-    const exists: boolean = await checkNpmName(packageName); // Replace with your API endpoint
-    return { packageName, exists };
+    const { packageExists } = await checkNpmName(packageName); // Replace with your API endpoint
+    return { packageName, exists: packageExists };
   } catch (error) {
     console.error(`Error checking package ${packageName}: ${error.message}`);
     return { packageName, exists: false }; // Assume not available in case of an error
