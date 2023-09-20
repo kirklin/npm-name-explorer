@@ -4,6 +4,7 @@ import { checkNpmName } from "~/apis/check-npm-name";
 interface Result {
   packageName: string;
   exists: boolean;
+  error: string | null; // Add an error property to store the error message
 }
 const state = reactive<{
   packageNames: string;
@@ -13,13 +14,21 @@ const state = reactive<{
   results: [],
 });
 const checkNpmNameExists = async (packageName: string) => {
+  const result: Result = {
+    packageName,
+    exists: false,
+    error: null,
+  };
+
   try {
     const { packageExists } = await checkNpmName(packageName); // Replace with your API endpoint
-    return { packageName, exists: packageExists };
+    result.exists = packageExists;
   } catch (error) {
     console.error(`Error checking package ${packageName}: ${error.message}`);
-    return { packageName, exists: false }; // Assume not available in case of an error
+    result.error = "Network request failed"; // Set a descriptive error message
   }
+
+  return result;
 };
 const checkPackages = async () => {
   // Split package names by line and remove any leading/trailing whitespace
@@ -50,7 +59,13 @@ const checkPackages = async () => {
         </h2>
         <ul>
           <li v-for="result in state.results" :key="result.packageName" class="mb-2">
-            <span class="font-semibold">{{ result.packageName }}</span> is <span v-if="result.exists" class="text-red-500">not available</span><span v-else class="text-green-500">available</span>
+            <span class="font-semibold">{{ result.packageName }}</span>
+            <template v-if="result.error">
+              <span class="text-red-500"> - Error: {{ result.error }}</span>
+            </template>
+            <template v-else>
+              is <span v-if="result.exists" class="text-red-500">not available</span><span v-else class="text-green-500">available</span>
+            </template>
           </li>
         </ul>
       </div>
