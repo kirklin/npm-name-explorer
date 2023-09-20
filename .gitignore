@@ -5,6 +5,8 @@ dist
 *.tgz
 lib-cov
 .cache
+/services/.nitro/
+/services/.output/
 
 ######################
 # Node
