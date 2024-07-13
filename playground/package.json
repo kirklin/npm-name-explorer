@@ -1,5 +1,6 @@
 {
   "name": "npm-name-explorer-examples",
+  "type": "module",
   "version": "0.0.1",
   "private": true,
   "packageManager": "pnpm@9.5.0",

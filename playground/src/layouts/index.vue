@@ -6,7 +6,7 @@ defineOptions({
 
 <template>
   <div class="font-chinese antialiased">
-    <div class="min-h-screen">
+    <div class="min-h-screen size-full">
       <RouterView />
     </div>
   </div>
