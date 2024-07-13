@@ -12,6 +12,6 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
-    "nitropack": "^2.5.2"
+    "nitropack": "^2.9.7"
   }
 }
