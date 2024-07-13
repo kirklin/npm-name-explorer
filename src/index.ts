@@ -71,8 +71,6 @@ export default async function checkNpmNameExists(name: string, options: { regist
 
       return true;
     } catch (error) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
       const { status } = error.response || {};
 
       if (status === 404) {

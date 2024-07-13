@@ -37,15 +37,11 @@ export interface ErrorResponse<T = any> {
  * @param array The list of items to be paginated.
  * @returns The paginated list of items.
  */
-export const paginate = <T = any>(
-  pageNo: number,
-  pageSize: number,
-  array: T[],
-): T[] => {
+export function paginate<T = any>(pageNo: number, pageSize: number, array: T[]): T[] {
   const startIndex = (pageNo - 1) * Number(pageSize);
   const endIndex = startIndex + Number(pageSize);
   return array.slice(startIndex, endIndex);
-};
+}
 
 /**
  * Returns a successful response with a data.
@@ -53,15 +49,14 @@ export const paginate = <T = any>(
  * @param message The message to be included in the response.
  * @returns A successful response with a data.
  */
-export const createSuccessResponse = <T = any>(
-  data: T,
-  message = "ok",
-): SuccessResponse<T> => ({
+export function createSuccessResponse<T = any>(data: T, message = "ok"): SuccessResponse<T> {
+  return {
     code: ResultConstants.SUCCESS,
     data,
     message,
     type: "success",
-  });
+  };
+}
 
 /**
  * Returns a successful response with a paginated list of results.
@@ -71,12 +66,7 @@ export const createSuccessResponse = <T = any>(
  * @param message The message to be included in the response.
  * @returns A successful response with a paginated list of results.
  */
-export const createPaginatedSuccessResponse = <T = any>(
-  page: number,
-  pageSize: number,
-  list: T[],
-  message = "ok",
-): SuccessResponse<{ items: T[]; total: number }> => {
+export function createPaginatedSuccessResponse<T = any>(page: number, pageSize: number, list: T[], message = "ok"): SuccessResponse<{ items: T[]; total: number }> {
   const paginatedList = paginate(page, pageSize, list);
 
   return {
@@ -85,7 +75,7 @@ export const createPaginatedSuccessResponse = <T = any>(
       total: list.length,
     }, message),
   };
-};
+}
 
 /**
  * Returns an error response with a message and optional code and data.
@@ -94,27 +84,23 @@ export const createPaginatedSuccessResponse = <T = any>(
  * @param data The optional error result to be included in the response.
  * @returns An error response with a message and optional code and data.
  */
-export const createErrorResponse = <T = any>(
-  message = "Request failed.",
-  code = ResultConstants.ERROR,
-  data: T | null = null,
-): ErrorResponse<T> => ({
+export function createErrorResponse<T = any>(message = "Request failed.", code = ResultConstants.ERROR, data: T | null = null): ErrorResponse<T> {
+  return {
     code,
     data,
     message,
     type: "error",
-  });
+  };
+}
 
 /**
  * Extracts the authorization token from the request headers.
  * @param headers The request headers.
  * @returns The authorization token, if present.
  */
-export const extractAuthorizationToken = (
-  headers,
-): string => {
+export function extractAuthorizationToken(headers): string {
   return getRequestHeader(headers, "authorization");
-};
+}
 
 /**
  * Get error message from an error object. If the error object is not an instance of Error,

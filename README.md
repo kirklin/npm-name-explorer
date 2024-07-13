@@ -11,9 +11,8 @@
 [code-style-image]: https://img.shields.io/badge/code__style-%40kirklin%2Feslint--config-brightgreen
 [code-style-url]: https://github.com/kirklin/eslint-config/
 
-
 This is a Node.js module that allows you to check whether a package or organization name is available on npm.
-          
+
 #### Features:
 - ⚡️ Supports checking both package names and organization names.
 - 🌐 Handles custom registry URLs for checking.
@@ -46,7 +45,7 @@ async function checkPackageExists() {
   try {
     const packageName = "your-package-name";
     const exists = await checkNpmNameExists(packageName);
-    
+
     if (exists) {
       console.log(`The package '${packageName}' exists on npm.`);
     } else {
