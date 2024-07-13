@@ -33,14 +33,7 @@ export default defineConfig(async ({ mode }) => {
       proxy: configureProxy(VITE_PROXY),
     },
     plugins: [
-      Vue(
-        {
-          script: {
-            propsDestructure: true,
-            defineModel: true,
-          },
-        },
-      ),
+      Vue(),
       Icons({
         scale: 1.5, // Scale of icons against 1em
         defaultStyle: "", // Style apply to icons
@@ -55,7 +48,6 @@ export default defineConfig(async ({ mode }) => {
           "vue",
           "vue-router",
           "vue-i18n",
-          "vue/macros",
           "@vueuse/head",
           "@vueuse/core",
         ],
